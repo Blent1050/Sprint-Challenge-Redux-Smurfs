@@ -1,7 +1,8 @@
 import {
   FETCH_START,
   FETCH_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FAILURE,
+  ADD_SMURF
 } from '../actions'
 
 const initialState = {
@@ -34,6 +35,11 @@ const smurfReducer = (state = initialState, action) => {
         error: action.payload,
         fetchingSmurfs: false
       }
+      case ADD_SMURF:
+        return{
+          ...state,
+          smurfs: [...state.smurfs, action.payload]
+        }
     default:
       return state;
   }
